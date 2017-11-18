@@ -9,7 +9,7 @@ Below we cover briefly how we addressed each of the rubric points. The Jupyter n
 To calibrate the camera, we are using the 20 chessboard images that we were provided by Udacity. Using the find Chessboard corners of the cv2 library, we identify a 9 by 6 chessboard in each of them, and with these points we can find the distortion transformation of the lens.
 Of these 20 images, we noticed that on three of them we can not find the board. Inspecting them (images 1, 4 and 5) we notice that en each of them at least one of the chessboard corners is cropped. If we really wanted to use them, we could change the size of the chessboard to find, but instead they served as an easy way to test that the calibration was indeed working.
 
-<img src="examples/Calibration.png" width="480" alt="Combined Image" />
+<img src="examples/Calibration.png" width="720" alt="Combined Image" />
 
 The image above showcases the result of undistorting the image using the calibration we found out.
 
@@ -25,7 +25,7 @@ We also obtain a fourth image using a hard coded thresholding on the HSV colour 
 
 After that, we applied first and second degree operators to the single channel images (Sobel and Laplacian), as well as thresholding to the resulting images to obtain binaries.
 
-<img src="examples/Edges.png" width="960" alt="Combined Image" />
+<img src="examples/Edges.png" width="720" alt="Combined Image" />
 
 We experimented with different combinations of the above, and settled on a Laplacian of the S channel, the Sobel on the greyscale image, and binaries for the S channel and the HSV yellow and white. We combined all of them to obtain the set of likely pixels of the lanes.
 
