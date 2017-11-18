@@ -73,9 +73,24 @@ In the Jupyter notebook we have an example of these quantities being calculated 
 
 Our pipeline worked well on the first video, but it fails on the Challenge one. We tried tweaking it to handle the added difficulty of the very dark regions in the second one, as well as the false positive of dark non-lane lines being present.
 
+The first video solution can be found in the Output folder of this repository.
+
 Unfortunately we didn't have enough time to apply all the insights that we obtained while attempting the challenge video, but we summarize here the main ways we can make our pipeline more robust:
 
-### Automatic bird's eye transformation
+### Using intrinsic information of the lanes
 
-It would 
+We know that the left and right lanes lines are almost parallel, and we know that the width remains constant, at around 3.7m. We can use this to improve our edge detection and as a sanity check. Instead of finding the mode of the histogram, we want to convolute with a function that has two steps of say 0.30m width 3.7 m apart (converted to pixels). Also, the sliding windows do not move independently for each lane.
+
+Similarly, when fitting the lanes to the points, we want to simultaneously fit both lanes, subject to a constraint that reflects the distance they mantain from each other.
+
+### Using previous lane information
+
+Currently our code smooths the lanes by averaging over the last 5 lanes. This was enough for the easy video, but to tackle the challenge one, we need something more sophisticated. We tried to use the masked edge detection instead of window search, using different logics as sanity check, but did not achieve the desired result so have left the most simple version here.
+
+### Improving the edge detection under shadows, and discarding "dark" lanes
+
+We attempted to use the L channel as a way of discarding false lanes that are painted in dark colours instead of yellow and white, but this approach did not work. Reading some forums/papers, it seems that we need to do localized histogram equalization to pick apart different colours under varying light conditions.
+
+We plan to come back to this project after finishing the last one to tackle the challenge video.
+
 
