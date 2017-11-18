@@ -25,7 +25,7 @@ We also obtain a fourth image using a hard coded thresholding on the HSV colour 
 
 After that, we applied first and second degree operators to the single channel images (Sobel and Laplacian), as well as thresholding to the resulting images to obtain binaries.
 
-<img src="examples/Edges.png" width="480" alt="Combined Image" />
+<img src="examples/Edges.png" width="960" alt="Combined Image" />
 
 We experimented with different combinations of the above, and settled on a Laplacian of the S channel, the Sobel on the greyscale image, and binaries for the S channel and the HSV yellow and white. We combined all of them to obtain the set of likely pixels of the lanes.
 
@@ -37,7 +37,7 @@ To obtaing the Bird's eye view of the lane, we first used the images with straig
 
 The image below illustrates the transform. The sanity check is seeing that the lane lines look equidistant after the transformation.
 
-<img src="examples/Birds_eye.png" width="480" alt="Combined Image" />
+<img src="examples/Birds_eye.png" width="1200" alt="Combined Image" />
 
 ## 4. Fitting a (lane) curve.
 
