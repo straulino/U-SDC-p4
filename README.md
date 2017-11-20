@@ -11,7 +11,9 @@ Of these 20 images, we noticed that on three of them we can not find the board. 
 
 <img src="examples/Calibration.png" width="720" alt="Combined Image" />
 
-The image above showcases the result of undistorting the image using the calibration we found out.
+The image above showcases the result of undistorting the a chessboard, and below we show how it affects one of the test images captured by the car camera.
+
+<img src="examples/Undistorted.png" width="720" alt="Combined Image" />
 
 ## 2. Obtain edges
 
