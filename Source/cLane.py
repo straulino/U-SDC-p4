@@ -39,8 +39,10 @@ class cLane():
         fit_cr = np.polyfit(y * m_per_pix_y, x * m_per_pix_x, 2)
         return int(((1 + (2 * fit_cr[0] * self.img_size[0] * m_per_pix_y + fit_cr[1]) ** 2) ** 1.5) / np.absolute(2 * fit_cr[0]))
 
-    def compute_dist_camera(c):        
-        return np.absolute((self.img_size[1] // 2 - c) * m_per_pix_x)
+    def compute_dist_camera(self):
+        fit = self.averaged_fit()
+        lane = fit[2]+fit[1]*self.img_size[0]+fit[0]*(self.img_size[0]**2)   
+        return np.absolute((self.img_size[1] // 2 - lane)) * m_per_pix_x
     
     def averaged_fit(self):    
         return np.array(self.coefficients).mean(axis=0)
